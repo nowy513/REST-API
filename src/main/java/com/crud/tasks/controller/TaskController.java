@@ -53,7 +53,7 @@ public class TaskController  {
         return taskMapper.mapToTaskDto(savedTask);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/tasks/{taskId}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask/{taskId}")
     public void deleteTask(@PathVariable Long taskId){
         service.deleteTask(taskId);
 
