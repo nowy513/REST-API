@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-@Data
 public class TrelloConfig {
 
     @Value("${trello.api.endpoint.prod}")
