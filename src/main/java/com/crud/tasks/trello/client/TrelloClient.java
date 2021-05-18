@@ -17,6 +17,8 @@ import java.net.URI;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Optional.ofNullable;
+
 @Component
 @RequiredArgsConstructor
 public class TrelloClient {
@@ -34,18 +36,13 @@ public class TrelloClient {
                 .queryParam("lists", "all")
                 .build()
                 .toUri();
-try {
-    TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
-    return Optional.ofNullable(boardsResponse)
-            .map(Arrays::asList)
-            .orElse(Collections.emptyList())
-            .stream()
-            .filter(p -> Objects.nonNull(p.getId()) && Objects.nonNull(p.getName()))
-            .collect(Collectors.toList());
-}catch (RestClientException e) {
-    LOGGER.error(e.getMessage(), e);
-    return Collections.emptyList();
-}
+        try {
+            TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
+            return Arrays.asList(ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
+        } catch (RestClientException e) {
+            LOGGER.error(e.getMessage(), e);
+            return new ArrayList<>();
+        }
     }
 
 
