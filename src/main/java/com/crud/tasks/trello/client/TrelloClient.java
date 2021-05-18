@@ -33,7 +33,6 @@ public class TrelloClient {
                 .queryParam("fields", "name,id")
                 .queryParam("lists", "all")
                 .build()
-                .encode()
                 .toUri();
 try {
     TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
