@@ -31,12 +31,11 @@ public class TrelloClient {
 
 
     public List<TrelloBoardDto> getTrelloBoards() {
-        URI url = UriComponentsBuilder.fromHttpUrl("https://api.trello.com/1/boards/60771d23132e81860a03d295?fields=name,id&key=24804656126ac3d26346dcd23deb7a93&=&token=06509a1c58471ae43018086e0b292d7c6127e8c1a867e98442ef72e8501ba00f&lists=all")
-//                (trelloConfig.getTrelloApiEndpoint() + "/members/" + trelloConfig.getTrelloUsername() + "/boards")
-//                .queryParam("key", trelloConfig.getTrelloAppKey())
-//                .queryParam("token", trelloConfig.getTrelloToken())
-//                .queryParam("fields", "name,id")
-//                .queryParam("lists", "all")
+        URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/members/" + trelloConfig.getTrelloUsername() + "/boards")
+                .queryParam("key", trelloConfig.getTrelloAppKey())
+                .queryParam("token", trelloConfig.getTrelloToken())
+                .queryParam("fields", "name,id")
+                .queryParam("lists", "all")
                 .build()
                 .encode()
                 .toUri();
