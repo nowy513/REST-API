@@ -18,9 +18,19 @@ public class TrelloController  {
     private final TrelloClient trelloClient;
 
     @GetMapping("getTrelloBoards")
-    public List<TrelloBoardDto> getTrelloBoards() {
-        return trelloClient.getTrelloBoards();
+//    public List<TrelloBoardDto> getTrelloBoards() {
+//        return trelloClient.getTrelloBoards();
+//    }
+
+    public void getTrelloBoards() {
+
+        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
+
+        trelloBoards.forEach(trelloBoardDto -> {
+            System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName());
+        });
     }
+
     @PostMapping("createTrelloCard")
     public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
         return trelloClient.createdNewCard(trelloCardDto);
