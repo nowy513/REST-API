@@ -67,7 +67,7 @@ class TrelloFacadeTest {
     void shouldCreateCard(){
 //        Given
         TrelloCardDto trelloCardDto = new TrelloCardDto("TrelloCard", "This is test", "up", "2414");
-        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto("74", "CreatedCard", "shortUrl", null);
+        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto("74", "CreatedCard", "shortUrl");
             when(trelloFacade.createCard(trelloCardDto)).thenReturn(createdTrelloCardDto);
 
 //            When
@@ -76,6 +76,5 @@ class TrelloFacadeTest {
         assertEquals("CreatedCard", result.getName());
         assertEquals("74", result.getId());
         assertEquals("shortUrl", result.getShortUrl());
-        assertNull(result.getBadges());
     }
 }
