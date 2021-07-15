@@ -35,19 +35,19 @@ public class TrelloClient {
                 .encode()
                 .toUri();
 
-//        try {
-//            TrelloBoardDto[] boardsResponse = restTemplate.getForObject(boardUrl(), TrelloBoardDto[].class);
-//            return Optional.ofNullable(boardsResponse)
-//                    .map(Arrays::asList)
-//                    .orElse(Collections.emptyList())
-//                    .stream()
-//                    .filter(p -> Objects.nonNull(p.getId()) && Objects.nonNull(p.getName()))
-//                    //.filter(p -> p.getName().contains("Kodilla"))
-//                    .collect(Collectors.toList());
-//        } catch (RestClientException e) {
-//            LOGGER.error(e.getMessage(), e);
+        try {
+            TrelloBoardDto[] boardsResponse = restTemplate.getForObject(boardUrl(), TrelloBoardDto[].class);
+            return Optional.ofNullable(boardsResponse)
+                    .map(Arrays::asList)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(p -> Objects.nonNull(p.getId()) && Objects.nonNull(p.getName()))
+                    //.filter(p -> p.getName().contains("Kodilla"))
+                    .collect(Collectors.toList());
+        } catch (RestClientException e) {
+            LOGGER.error(e.getMessage(), e);
             return Collections.emptyList();
-//        }
+        }
     }
 
     private URI boardUrl(){
