@@ -63,18 +63,18 @@ class TrelloFacadeTest {
         assertThat(trelloBoardDtos.size()).isEqualTo(0);
     }
 
-    @Test
-    void shouldCreateCard(){
-//        Given
-        TrelloCardDto trelloCardDto = new TrelloCardDto("TrelloCard", "This is test", "up", "2414");
-        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto("74", "CreatedCard", "shortUrl");
-            when(trelloFacade.createCard(trelloCardDto)).thenReturn(createdTrelloCardDto);
-
-//            When
-        CreatedTrelloCardDto result = trelloFacade.createCard(trelloCardDto);
-//        Then
-        assertEquals("CreatedCard", result.getName());
-        assertEquals("74", result.getId());
-        assertEquals("shortUrl", result.getShortUrl());
-    }
+//    @Test
+//    void shouldCreateCard(){
+////        Given
+//        TrelloCardDto trelloCardDto = new TrelloCardDto("TrelloCard", "This is test", "up", "2414");
+//        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto("74", "CreatedCard", "shortUrl");
+//            when(trelloFacade.createCard(trelloCardDto)).thenReturn(createdTrelloCardDto);
+//
+////            When
+//        CreatedTrelloCardDto result = trelloFacade.createCard(trelloCardDto);
+////        Then
+//        assertEquals("CreatedCard", result.getName());
+//        assertEquals("74", result.getId());
+//        assertEquals("shortUrl", result.getShortUrl());
+//    }
 }

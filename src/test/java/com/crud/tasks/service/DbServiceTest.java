@@ -51,7 +51,7 @@ public class DbServiceTest {
         when(taskRepository.findById(1L)).thenReturn(Optional.of(task));
 
 //        When
-        Optional<Task> theTask = dbService.getTask(1L);
+        Optional<Task> theTask = dbService.getTaskById(1L);
 
 //        Then
         assertEquals(Optional.of(task), theTask);
@@ -83,7 +83,7 @@ public class DbServiceTest {
         dbService.deleteTask(id);
 
 //        When
-        Optional<Task> theTask = dbService.getTask(id);
+        Optional<Task> theTask = dbService.getTaskById(1L);
 
 //        Then
         assertFalse(theTask.isPresent());

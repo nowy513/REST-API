@@ -1,6 +1,6 @@
 package com.crud.tasks.service;
 
-import com.crud.tasks.config.AdminConfig;
+//import com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.domain.CreatedTrelloCardDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
@@ -28,8 +28,8 @@ public class TrelloServiceTest {
     private TrelloClient trelloClient;
 
 
-    @Mock
-    private AdminConfig adminConfig;
+//    @Mock
+//    private AdminConfig adminConfig;
 
     @Test
     public void testFetchTrelloBoards() {
@@ -48,18 +48,18 @@ public class TrelloServiceTest {
         //Then
         assertEquals(1, testTrelloBoardsDtos.size());
     }
-    @Test
-    public void testCreateNullTrelloCard() {
-        //Given
-        TrelloCardDto trelloCardDto = new TrelloCardDto("Name", "Description",
-                "Top", "3342");
-        CreatedTrelloCardDto createdTrelloCardDto = null;
-        when(trelloClient.createdNewCard(trelloCardDto)).thenReturn(createdTrelloCardDto);
-
-        //When
-        CreatedTrelloCardDto testCreateNewCart = trelloService.createdTrelloCard(trelloCardDto);
-
-        //Then
-        assertNull(testCreateNewCart);
-    }
+//    @Test
+//    public void testCreateNullTrelloCard() {
+//        //Given
+//        TrelloCardDto trelloCardDto = new TrelloCardDto("Name", "Description",
+//                "Top", "3342");
+//        CreatedTrelloCardDto createdTrelloCardDto = null;
+//        when(trelloClient.createdNewCard(trelloCardDto)).thenReturn(createdTrelloCardDto);
+//
+//        //When
+//        CreatedTrelloCardDto testCreateNewCart = trelloService.createdTrelloCard(trelloCardDto);
+//
+//        //Then
+//        assertNull(testCreateNewCart);
+//    }
 }

@@ -49,52 +49,52 @@ class TrelloControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(0)));
     }
 
-    @Test
-    void shouldFetchTrelloBoards() throws Exception {
-        List<TrelloListDto> trelloLists = new ArrayList<>();
-        trelloLists.add(new TrelloListDto("1", "Test Task", false));
-        List<TrelloBoardDto> trelloBoards = new ArrayList<>();
-        trelloBoards.add(new TrelloBoardDto("1", "Test task", trelloLists));
-        when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoards);
-
-
-//When & Then
-        mockMvc
-                .perform(MockMvcRequestBuilders
-                        .get("/v1/trello/getTrelloBoards")
-                        .contentType(MediaType.APPLICATION_JSON))
-                // Trello board fields
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id", Matchers.is("1")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name", Matchers.is("Test task")))
-                // Trello list fields
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists", Matchers.hasSize(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].id", Matchers.is("1")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].name", Matchers.is("Test Task")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].closed", Matchers.is(false)));
-    }
-    @Test
-    void shouldCreateTrelloCard() throws Exception{
-//        Given
-        TrelloCardDto trelloCardDto =
-                new TrelloCardDto("Test", "Test description", "top", "1");
-
-        CreatedTrelloCardDto createdTrelloCardDto =
-                new CreatedTrelloCardDto("232", "Test", "http://test.com");
-
-        when(trelloFacade.createCard(any(TrelloCardDto.class))).thenReturn(createdTrelloCardDto);
-        Gson gson = new Gson();
-        String jsonContent=gson.toJson(trelloCardDto);
-
-//        When & Then
-        mockMvc
-                .perform(MockMvcRequestBuilders
-                        .post("/v1/trello/createTrelloCard")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(jsonContent))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is("232")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("Test")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.shortUrl", Matchers.is("http://test.com")));
-    }
+//    @Test
+//    void shouldFetchTrelloBoards() throws Exception {
+//        List<TrelloListDto> trelloLists = new ArrayList<>();
+//        trelloLists.add(new TrelloListDto("1", "Test Task", false));
+//        List<TrelloBoardDto> trelloBoards = new ArrayList<>();
+//        trelloBoards.add(new TrelloBoardDto("1", "Test task", trelloLists));
+//        when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoards);
+//
+//
+////When & Then
+//        mockMvc
+//                .perform(MockMvcRequestBuilders
+//                        .get("/v1/trello/getTrelloBoards")
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                // Trello board fields
+//                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(1)))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id", Matchers.is("1")))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name", Matchers.is("Test task")))
+//                // Trello list fields
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists", Matchers.hasSize(1)))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].id", Matchers.is("1")))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].name", Matchers.is("Test Task")))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$[0].lists[0].closed", Matchers.is(false)));
+//    }
+//    @Test
+//    void shouldCreateTrelloCard() throws Exception{
+////        Given
+//        TrelloCardDto trelloCardDto =
+//                new TrelloCardDto("Test", "Test description", "top", "1");
+//
+//        CreatedTrelloCardDto createdTrelloCardDto =
+//                new CreatedTrelloCardDto("232", "Test", "http://test.com");
+//
+//        when(trelloFacade.createCard(any(TrelloCardDto.class))).thenReturn(createdTrelloCardDto);
+//        Gson gson = new Gson();
+//        String jsonContent=gson.toJson(trelloCardDto);
+//
+////        When & Then
+//        mockMvc
+//                .perform(MockMvcRequestBuilders
+//                        .post("/v1/trello/createTrelloCard")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .characterEncoding("UTF-8")
+//                        .content(jsonContent))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is("232")))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("Test")))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.shortUrl", Matchers.is("http://test.com")));
+//    }
 }

@@ -36,15 +36,4 @@ public class TrelloValidatorTest {
         assertEquals(1, validatorTrello.size());
     }
 
-    @Test
-    void testValidateTrelloCard(){
-//        Given
-        TrelloCard trelloCard = new TrelloCard("CardName", "This is test", "up", "23");
-
-//        When
-        TrelloCard validateTrelloCard = trelloValidator.validateCard(trelloCard);
-
-//        Then
-        assertEquals("CardName", validateTrelloCard.getName());
-    }
 }

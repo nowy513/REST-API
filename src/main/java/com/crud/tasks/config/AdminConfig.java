@@ -6,7 +6,8 @@
 //
 //@Component
 //@Getter
-//public class AdminConfig{
+//public class AdminConfig {
+//
 //    @Value("${admin.mail}")
 //    private String adminMail;
 //}

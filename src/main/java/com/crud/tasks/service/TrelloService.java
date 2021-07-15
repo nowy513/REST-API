@@ -16,24 +16,25 @@ import static java.util.Optional.ofNullable;
 @Service
 @RequiredArgsConstructor
 public class TrelloService {
-    private static final String SUBJECT = "Tasks: New Trello card";
+
+    private static final String SUBJECT = "Task: New Trello Card";
     private final TrelloClient trelloClient;
 //    private final SimpleEmailService emailService;
 //    private final AdminConfig adminConfig;
 
-    public List<TrelloBoardDto> fetchTrelloBoards(){
+    public List<TrelloBoardDto> fetchTrelloBoards() {
         return trelloClient.getTrelloBoards();
     }
 
-    public CreatedTrelloCardDto createdTrelloCard(final TrelloCardDto trelloCardDto){
-        CreatedTrelloCardDto newCard = trelloClient.createdNewCard(trelloCardDto);
-//        ofNullable(newCard).ifPresent(card ->emailService.send(
+    public CreatedTrelloCardDto createTrelloCard(final TrelloCardDto trelloCardDto) {
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
+//        ofNullable(newCard).ifPresent(card -> emailService.send(
 //                new Mail(
-//                "",
-//                SUBJECT,
-//                "New card: " + trelloCardDto.getName() + "has been created on your Trello account",
-//                null
-//        )));
+//                        adminConfig.getAdminMail(),
+//                        SUBJECT,
+//                        "New card: " + trelloCardDto.getName() + " has been created on your Trello account",
+//                        null
+//                )));
         return newCard;
     }
 }

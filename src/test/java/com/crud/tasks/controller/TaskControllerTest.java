@@ -60,7 +60,7 @@ public class TaskControllerTest {
         Task task = new Task(1L, "Title", "Content");
         TaskDto taskDto = new TaskDto(1L, "Title", "Content");
 
-        when(dbService.getTask(1L)).thenReturn(Optional.of(task));
+        when(dbService.getTaskById(1L)).thenReturn(Optional.of(task));
         when(taskMapper.mapToTaskDto(any())).thenReturn(taskDto);
 
 //        When & Then

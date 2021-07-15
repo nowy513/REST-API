@@ -3,10 +3,10 @@ package com.crud.tasks.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
+@Getter
 public class TrelloList {
     private String id;
     private String name;
-    private boolean isClose;
+    private boolean isClosed;
 }

@@ -5,8 +5,8 @@ import lombok.Getter;
 
 import java.util.List;
 
-@Getter
 @AllArgsConstructor
+@Getter
 public class TrelloBoard {
     private String id;
     private String name;

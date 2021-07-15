@@ -3,14 +3,22 @@ package com.crud.tasks.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import javax.persistence.Id;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 
 @NoArgsConstructor
-@Getter
 @AllArgsConstructor
+@Getter
 @Entity(name = "tasks")
 public class Task {
+
+    public Task(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 
     @Id
     @GeneratedValue
